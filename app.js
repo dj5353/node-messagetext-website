@@ -24,7 +24,8 @@ const partialpath = path.join(__dirname,'/templates/partials')
 
 
 //public folder setup
-app.use(express.static(__dirname+'/public'))
+app.use(express.static(__dirname+'/public'));
+app.use(express.json({limit:'1mb'}));
 
 //engine setting
 app.set('view engine','hbs');
@@ -37,8 +38,10 @@ app.get('/',(req,res) => {
 })
 
 app.post('/',(req,res) => {
-    
-    const from = 'Nexmo';
+    // res.send(req.body)
+    console.log(req.body)
+
+    const from = 'Divit-World';
     const to = req.body.number;
     const text = req.body.text;
 
