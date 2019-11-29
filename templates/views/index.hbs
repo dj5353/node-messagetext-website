@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>
+            Node Sms Texting
+        </title>
+    </head>
+    <body>
+        <div class='container'>
+            <h2>Send SMS Message</h2>
+            <input type = 'tel' id ="number" placeholder = "Enter the phone numeber...">
+            <input type = "text" id = "mes" placeholder = "Enter the text message here">
+            <input type = "button" id = "button" value = "Send text" > 
+            <p class="response"></p>
+        </div>
+        <script>
+            const numberInput = document.getElementById('number');
+            const textInput = document.getElementById('mes');
+            const button = document.getElementById('button');
+            const response = document.querySelector('.response');
+        
+            button.addEventListener('click',send);
+            
+            function send(){
+                const number = numberInput.value;
+                const text = textInput.value;
+
+                console.log('send');
+                fetch('/', {
+                    method: 'post',
+                    body: JSON.stringify({number : number, text : text})
+                }).then(function (res) {
+                    console.log(res);
+                    })
+                    .catch(function (err) {
+                    console.log(err);
+                    });
+            }
+                
+            
+
+ 
+        </script>
+    </body>
+</html>
